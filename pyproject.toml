@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xhec-mlops-project-student"
+version = "0.0.1"
+authors = [
+  { name = "username", email = "user@email.com" },
+] # TODO: add authors here
+description = "X-HEC MLOps Project on Abalone age prediction model"
+requires-python = ">3.10" # TODO: update this version
+
+# TODO: add pydantic, pre-commit and ruff as a dependency

@@ -1,5 +1,5 @@
 repos:
-  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
       - id: trailing-whitespace
@@ -8,9 +8,22 @@ repos:
       - id: check-yaml
       - id: check-json
       - id: check-added-large-files
-    # TODO - add ruff pre-commit hooks
-  - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.7.17
+  - repo: local
     hooks:
-      - id: uv-lock
-exclude: ^(.svn|CVS|.bzr|.hg|.git|__pycache__|.tox|.ipynb_checkpoints|assets|tests/assets/|venv/|.venv/)
+      - id: ruff-check
+        name: Ruff lint
+        entry: uv run --no-sync ruff check
+        language: system
+        types_or: [python, pyi, jupyter]
+      - id: ruff-format
+        name: Ruff format
+        entry: uv run --no-sync ruff format --check
+        language: system
+        types_or: [python, pyi, jupyter]
+      - id: uv-lock-check
+        name: Check dependency lockfile
+        entry: uv lock --check
+        language: system
+        pass_filenames: false
+        always_run: true
+exclude: ^(assets/|tests/assets/|venv/|\.venv/)

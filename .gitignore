@@ -85,3 +85,10 @@ secrets/*
 
 # Mac files
 .DS_Store
+
+# Local datasets and generated experiment/model outputs
+/data/*.csv
+/mlruns/
+/mlartifacts/
+/artifacts/
+.ruff_cache/

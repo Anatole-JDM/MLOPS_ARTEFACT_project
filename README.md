@@ -4,6 +4,33 @@ Project for the mlops course with Artefact
 
 Team repository: https://github.com/Anatole-JDM/MLOPS_ARTEFACT_project
 
+## Step 2: Train and predict from Python modules
+
+First place `abalone.csv` in `data/` as described in Step 1. From the repository root:
+
+```bash
+uv sync --locked --python 3.11
+uv run python -m src.modelling.main data/abalone.csv
+uv run python -m src.modelling.predicting data/abalone.csv
+```
+
+The prediction command accepts a CSV containing the eight feature columns; it also
+accepts the training CSV and ignores its `Rings` column. It prints predicted ring
+counts as JSON. Training compares the same three candidates and 60/20/20 split as
+the Step 1 notebook, choosing by validation MAE before one held-out test evaluation.
+MLflow runs are stored in `mlruns/`. The saved `.pkl` is the **whole fitted pipeline**
+(height cleaning, imputation, encoding, scaling and regressor), ready for the API:
+`src/web_service/local_objects/abalone_model.pkl`. Results are in
+`artifacts/step2_results.json`. These generated files are excluded from Git.
+
+To check the code without downloading the dataset:
+
+```bash
+uv run python -m unittest discover -s tests
+uv run ruff check .
+uv run ruff format --check .
+```
+
 ## Step 1: Data exploration and modelling
 
 Copy the course Abalone CSV to `data/abalone.csv` (ignored by Git). The expected

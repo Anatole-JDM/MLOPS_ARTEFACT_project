@@ -1,3 +1,60 @@
+# MLOPS_ARTEFACT_project
+
+Project for the mlops course with Artefact
+
+Team repository: https://github.com/Anatole-JDM/MLOPS_ARTEFACT_project
+
+## Step 0: Development environment
+
+Use Python 3.11 and uv 0.12.20. Run these commands from the repository root:
+
+```bash
+uv sync --locked --python 3.11
+source .venv/bin/activate
+uv run pre-commit install
+uv run pre-commit run --all-files
+```
+
+`uv sync` installs application and development dependencies into `.venv`.
+Pydantic is an application dependency; Ruff and pre-commit are development tools.
+Pydantic 1.x is selected for compatibility with the course's older library stack.
+Dependencies for modelling, orchestration and the API will be added in their steps.
+
+Pre-commit runs before each commit. GitHub Actions runs the same checks on pushes
+and pull requests, using the committed `uv.lock` for reproducibility.
+Ruff checks Python errors and import order, and checks formatting. To fix Python
+files when needed, run:
+
+```bash
+uv run ruff check --fix .
+uv run ruff format .
+uv run pre-commit run --all-files
+```
+
+Some hooks fix whitespace automatically. Review their edits and run the checks again.
+Whenever dependencies change, run `uv lock` (or `uv add`) and commit `uv.lock`.
+Do not commit `.venv`, credentials, or downloaded datasets.
+
+### Contributors
+
+- yunxianliu (GitHub: Yunxianliuuuuu)
+- Other team members should add their own names and GitHub usernames.
+
+### Actual exercise branches
+
+1. `0/environment_setup`
+2. `1/eda_and_modelling_notebooks`
+3. `2/from_notebooks_to_modules`
+4. `3/use_prefect`
+5. `4/deploy_model_api`
+
+Read the corresponding `PR_i.md`, complete and check that step, then open a PR
+to this team's `main` branch. Merge the previous work into each subsequent branch
+before continuing. This repository uses `main`, not `master`.
+The official course instructions below describe the remaining project goals.
+
+---
+
 <div align="center">
 
 # MLOps Project: Abalone Age Prediction
@@ -17,7 +74,7 @@ Welcome to your MLOps project! In this hands-on project, you'll build a complete
 
 Traditionally, determining an abalone's age requires:
 1. Cutting the shell through the cone
-2. Staining it 
+2. Staining it
 3. Counting rings under a microscope (very time-consuming!)
 
 **Your Goal**: Use easier-to-obtain physical measurements (shell weight, diameter, etc.) to predict the age automatically.
@@ -30,31 +87,30 @@ Traditionally, determining an abalone's age requires:
 ### Prerequisites
 - GitHub account
 - [Kaggle account](https://www.kaggle.com/account/login?phase=startRegisterTab&returnUrl=%2F) (for dataset download)
-- Python 3.10 or 3.11
+- Python 3.11
 
 ### Setup Steps
 
-1. **Fork this repository** 
+1. **Fork this repository**
    - ⚠️ **Important**: Uncheck "Copy the `main` branch only" to get all project branches
-   
+
 2. **Add your team members** as admins to your forked repository
 
 3. **Set up your development environment**:
    ```bash
    # Create and activate a virtual environment
-   uv sync 
-   source venv/bin/activate # on Windows: venv\Scripts\activate
+   uv sync
+   source .venv/bin/activate # on Windows: .venv\Scripts\activate
 
    # Install pre-commit hooks for code quality
-    uv pip install pre-commit
-    uv run pre-commit install
+   uv run pre-commit install
    ```
 
 ## 📋 What You'll Build
 
 By the end of this project, you'll have created:
 
-### 🤖 **Automated ML Pipeline** 
+### 🤖 **Automated ML Pipeline**
 - Training workflows using Prefect
 - Automatic model retraining on schedule
 - Reproducible model and data processing
@@ -67,7 +123,7 @@ By the end of this project, you'll have created:
 ### 📊 **Production-Ready Code**
 - Clean, well-documented code
 - Automated testing and formatting
-- Proper error handling 
+- Proper error handling
 
 ## 📝 How to Work on This Project
 
@@ -102,7 +158,7 @@ git push
 
 Then:
 1. 📖 Read the PR_i.md file carefully
-2. 💻 Complete all the TODOs in the code  
+2. 💻 Complete all the TODOs in the code
 3. 🔧 Test your changes
 4. 📤 Open **ONE** pull request to your main branch
 5. ✅ Merge the pull request
@@ -147,16 +203,16 @@ uv sync
 
 Your project will be evaluated on:
 
-### 🔍 **Code Quality** 
+### 🔍 **Code Quality**
 - Clean, readable code structure
-- Proper naming conventions  
+- Proper naming conventions
 - Good use of docstrings and type hints
 
 ### 🎨 **Code Formatting**
 - Consistent style (automated with pre-commit)
 - Professional presentation
 
-### ⚙️ **Functionality** 
+### ⚙️ **Functionality**
 - Code runs without errors
 - All requirements implemented correctly
 
@@ -177,10 +233,10 @@ When you're done, your repository should contain:
 
 ✅ **Automated Training Pipeline**
 - [ ] Prefect workflows for model training
-- [ ] Separate modules for training and inference  
+- [ ] Separate modules for training and inference
 - [ ] Reproducible model and encoder generation
 
-✅ **Automated Deployment**  
+✅ **Automated Deployment**
 - [ ] Prefect deployment for regular retraining
 
 ✅ **Production API**

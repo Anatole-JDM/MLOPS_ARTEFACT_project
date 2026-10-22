@@ -73,8 +73,10 @@ Do not commit `.venv`, credentials, or downloaded datasets.
 
 ### Contributors
 
-- yunxianliu (GitHub: Yunxianliuuuuu)
-- Other team members should add their own names and GitHub usernames.
+- Yunxian LIU (GitHub: louiseliu6)
+- Felix Meyer (GitHub:felixmeyer6)
+- Lucien Descazeaud (GitHub:luciendescazeaud)
+- Anatole Jacquin de Margerie (GitHub:Anatole-JDM)
 
 ### Actual exercise branches
 

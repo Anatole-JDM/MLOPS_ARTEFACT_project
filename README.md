@@ -1,5 +1,7 @@
 # MLOPS_ARTEFACT_project
 
+Project for the mlops course with Artefact
+
 Team repository: https://github.com/Anatole-JDM/MLOPS_ARTEFACT_project
 
 ## Step 0: Development environment
@@ -35,7 +37,7 @@ Do not commit `.venv`, credentials, or downloaded datasets.
 
 ### Contributors
 
-- yunxianliu (existing Git author; GitHub username to be confirmed)
+- yunxianliu (GitHub: Yunxianliuuuuu)
 - Other team members should add their own names and GitHub usernames.
 
 ### Actual exercise branches

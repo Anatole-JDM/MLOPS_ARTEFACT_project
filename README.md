@@ -4,6 +4,42 @@ Project for the mlops course with Artefact
 
 Team repository: https://github.com/Anatole-JDM/MLOPS_ARTEFACT_project
 
+## Step 1: Data exploration and modelling
+
+Copy the course Abalone CSV to `data/abalone.csv` (ignored by Git). The expected
+columns are Sex, Length, Diameter, Height, Whole weight, Shucked weight,
+Viscera weight, Shell weight, and Rings. The target is ring count, not years.
+
+```bash
+uv sync --locked --python 3.11
+```
+
+In VS Code open `notebooks/eda.ipynb`, then `notebooks/modelling.ipynb`.
+Choose `.venv/bin/python` as the notebook kernel and use Run All.
+Alternatively, execute from the project root:
+
+```bash
+uv run jupyter nbconvert --to notebook --execute --inplace notebooks/eda.ipynb
+uv run jupyter nbconvert --to notebook --execute --inplace notebooks/modelling.ipynb
+```
+
+The fixed seed is 42, with approximately 60/20/20 train/validation/test splits.
+Preprocessing is fitted inside each model pipeline. Choose by validation MAE,
+then evaluate the selected model once on held-out test data. Candidates are a
+training-mean baseline, linear regression and a fixed random forest.
+The notebooks compare ring-count MAE, RMSE and R-squared.
+
+Experiments are local in `mlruns`; the selected pipeline and metrics are in
+`artifacts`. Both directories and the CSV are excluded from Git.
+To see this project's experiments, run from the project root:
+
+```bash
+uv run mlflow ui --backend-store-uri ./mlruns --host 127.0.0.1 --port 5003
+```
+
+Open http://127.0.0.1:5003 and select `abalone_step1`. This project uses MLflow
+2.7.1 in its own environment; do not reuse the course tutorial's database or server.
+
 ## Step 0: Development environment
 
 Use Python 3.11 and uv 0.12.20. Run these commands from the repository root:
